@@ -25,7 +25,7 @@ const AllProjects = () => {
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    document.title = "Projects — Abdullah Alhakim Alhendi";
+    document.title = "Abdullah Alhakim Alhendi";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 

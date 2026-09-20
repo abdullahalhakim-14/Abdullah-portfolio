@@ -13,7 +13,7 @@ const Home = () => {
   const { hash } = useLocation();
 
   useLayoutEffect(() => {
-    document.title = "Abdullah Alhakim Alhendi — Front-End Developer";
+    document.title = "Abdullah Alhakim Alhendi";
     if (!hash) return;
     const target = document.getElementById(hash.slice(1));
     if (!target) return;
