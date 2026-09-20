@@ -1,0 +1,753 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Lavishly+Yours&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --color-maincolor: #303c18;
+  --color-first: #f4f2e8;
+  --color-second: #403019;
+  --color-accent: #b8653b;
+
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-ui: "Space Grotesk", sans-serif;
+}
+
+.projects-mobile-track {
+  display: block;
+}
+
+.projects-desktop-grid {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .projects-mobile-track {
+    display: none;
+  }
+
+  .projects-desktop-grid {
+    display: grid;
+  }
+}
+
+/* Hero composition for displays larger than a standard laptop. */
+@media (min-width: 100rem) and (min-height: 50rem) {
+  #hero {
+    padding-inline: clamp(2.5rem, 4vw, 6rem);
+    padding-bottom: clamp(1.75rem, 2.5vh, 3rem);
+  }
+
+  #hero::before {
+    position: absolute;
+    inset: 8% 12%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgb(184 101 59 / 7%) 0%,
+      rgb(48 60 24 / 3%) 34%,
+      transparent 70%
+    );
+    content: "";
+    pointer-events: none;
+  }
+
+  #hero > .relative.z-10 {
+    max-width: none;
+  }
+
+  #hero h1 {
+    font-size: clamp(12rem, min(13vw, 20vh), 18rem) !important;
+  }
+
+  #hero h1 + p {
+    max-width: 44rem;
+    margin-top: clamp(1rem, 2vh, 1.75rem);
+    font-size: clamp(1rem, 0.9vw, 1.25rem);
+  }
+
+  #hero > .relative.z-10 > div:last-child > p {
+    font-size: clamp(4rem, 3.8vw, 5.75rem);
+  }
+
+  #hero > .relative.z-10 > div:last-child > div > p:first-child {
+    font-size: clamp(0.875rem, 0.75vw, 1.125rem);
+  }
+
+  #hero > .relative.z-10 > div:last-child > div > p:last-child {
+    font-size: clamp(0.75rem, 0.65vw, 1rem);
+  }
+}
+
+/* About composition for displays larger than a standard laptop. */
+@media (min-width: 100rem) and (min-height: 50rem) {
+  #about > .relative.z-10 {
+    max-width: min(90vw, 135rem);
+    grid-template-columns: minmax(0, 1.12fr) minmax(28rem, 0.88fr);
+    gap: clamp(5rem, 5vw, 8rem);
+    padding-inline: clamp(4rem, 4vw, 6rem);
+  }
+
+  #about > .relative.z-10 > div:first-child > div {
+    height: 82%;
+    max-height: min(76vh, 50rem);
+  }
+
+  #about > .relative.z-10 > div:last-child {
+    max-width: 68rem;
+  }
+
+  #about h2 {
+    max-width: 66rem;
+    font-size: clamp(5.8rem, min(5.1vw, 9vh), 7.25rem) !important;
+  }
+
+  #about h2 + div {
+    max-width: 60rem;
+    margin-top: clamp(1.5rem, 2.4vh, 2.25rem);
+  }
+
+  #about h2 + div > p {
+    font-size: clamp(1.1rem, 1vw, 1.3rem);
+    line-height: 1.7;
+  }
+
+  #about > .relative.z-10 > div:last-child > div:nth-of-type(3) {
+    margin-top: clamp(1.75rem, 2.7vh, 2.75rem);
+  }
+
+  #about > .relative.z-10 > div:last-child > div:nth-of-type(3) > div {
+    padding: clamp(1rem, 1.4vw, 1.5rem);
+  }
+
+  #about > .relative.z-10 > div:last-child > div:nth-of-type(3) p {
+    font-size: clamp(1.1rem, 1vw, 1.35rem);
+  }
+
+  #about figcaption p:first-child {
+    font-size: clamp(0.6rem, 0.5vw, 0.72rem);
+  }
+
+  #about figcaption p:last-child {
+    font-size: clamp(1.15rem, 1vw, 1.4rem);
+  }
+}
+
+/* Education composition for displays larger than a standard laptop. */
+@media (min-width: 100rem) and (min-height: 50rem) {
+  #education {
+    padding-inline: clamp(4rem, 4vw, 6rem);
+  }
+
+  #education > .relative.z-10 {
+    max-width: min(92vw, 140rem);
+  }
+
+  #education > .relative.z-10 > header {
+    margin-bottom: clamp(1.5rem, 2vh, 2rem);
+  }
+
+  #education > .relative.z-10 > div:first-of-type {
+    flex: 0 0 auto;
+    height: clamp(26rem, 48vh, 38rem);
+    gap: clamp(0.35rem, 0.5vw, 0.75rem);
+  }
+
+  #education article {
+    padding: clamp(2.75rem, 2.3vw, 3rem);
+  }
+
+  #education article > span:first-child {
+    right: clamp(2.5rem, 3vw, 4rem);
+    font-size: 13rem;
+  }
+
+  #education article h3 {
+    max-width: none;
+    font-size: clamp(3.25rem, 3vw, 3.75rem);
+  }
+
+  #education article > div:nth-of-type(2) {
+    padding-block: clamp(1.25rem, 2vh, 1.75rem);
+  }
+
+  #education article > div:nth-of-type(2) > p:first-child {
+    margin-bottom: 1rem;
+  }
+
+  #education article h3 + div {
+    margin-top: clamp(1rem, 1.6vh, 1.5rem);
+  }
+
+  #education article h3 + div + div {
+    margin-top: clamp(0.75rem, 1.4vh, 1.25rem);
+  }
+}
+
+/* Keep every education detail visible on shorter desktop viewports. */
+@media (min-width: 64rem) and (max-width: 99.999rem) and (max-height: 55rem) {
+  #education {
+    padding-top: 6.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  #education > .relative.z-10 {
+    height: 100%;
+  }
+
+  #education > .relative.z-10 > header {
+    margin-bottom: 1rem;
+  }
+
+  #education > .relative.z-10 > header > div:last-child {
+    margin-top: 0.75rem;
+  }
+
+  #education h2 {
+    font-size: clamp(4.25rem, 6vw, 5.25rem) !important;
+  }
+
+  #education article {
+    padding: clamp(1.65rem, 2vw, 2rem);
+  }
+
+  #education article h3 {
+    max-width: none;
+    font-size: clamp(2.35rem, 3.15vw, 3rem);
+  }
+
+  #education article > div:nth-of-type(2) {
+    padding-block: 0.75rem;
+  }
+
+  #education article > div:nth-of-type(2) > p:first-child {
+    margin-bottom: 0.75rem;
+  }
+
+  #education article h3 + div {
+    margin-top: 0.875rem;
+  }
+
+  #education article h3 + div + div {
+    margin-top: 0.75rem;
+  }
+
+  #education article > div:nth-of-type(2) > div:last-child > p:first-child {
+    font-size: 1rem;
+  }
+
+  #education article > div:nth-of-type(2) > div:last-child > p:last-child {
+    font-size: 0.75rem;
+  }
+
+  #education article > div:nth-of-type(3) > div > p:last-child {
+    font-size: 1.25rem;
+  }
+
+  #education > .relative.z-10 > footer {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+}
+
+/* Keyboard visibility without altering the resting design. */
+:where(a, button, input, textarea, [tabindex="0"]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+#contact form input:focus-visible,
+#contact form textarea:focus-visible {
+  outline: 2px solid var(--color-maincolor);
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
+
+#contact form label > span {
+  font-size: 0.6875rem;
+  color: rgb(64 48 25 / 80%);
+}
+
+#contact form :is(input, textarea)::placeholder,
+#contact form > p:last-child {
+  color: rgb(64 48 25 / 75%);
+}
+
+#contact form > p:last-child {
+  font-size: 0.6875rem;
+}
+
+/* Let the image give space to real card content, never clip the skills. */
+.project-card-copy {
+  min-height: 32.5%;
+}
+
+@media (max-height: 40rem) {
+  #projects .project-card-copy {
+    padding: 0.75rem 1rem;
+  }
+
+  #projects .project-card-copy h3 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    line-height: 1;
+  }
+
+  #projects .project-card-copy > div:last-child {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+}
+
+/* Short windows need content-driven height rather than invisible text. */
+@media (max-height: 40rem) {
+  #experience {
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  #experience > .relative.z-10 {
+    height: auto;
+  }
+
+  #experience article {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 10rem;
+  }
+
+  #experience article > .relative.z-10 {
+    height: auto;
+    padding-block: 1rem;
+  }
+}
+
+@media (min-width: 64rem) and (max-height: 40rem) {
+  #education {
+    height: auto;
+    min-height: 100dvh;
+    padding-top: 6rem;
+  }
+
+  #education > .relative.z-10 {
+    height: auto;
+  }
+
+  #education h2 {
+    font-size: clamp(3rem, 6vw, 4.25rem) !important;
+  }
+
+  #education article {
+    padding: 1.25rem;
+  }
+
+  #education article h3 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+  }
+}
+
+@media (max-height: 30rem) {
+  #projects {
+    height: 42rem;
+    min-height: 100dvh;
+  }
+}
+
+/* Experience composition for small screens. */
+@media (max-width: 47.999rem) {
+  #experience > .relative.z-10 {
+    padding-top: clamp(5.25rem, 12vh, 6.25rem);
+    padding-bottom: 0.75rem;
+  }
+
+  #experience > .relative.z-10 > header {
+    padding-inline: 1rem;
+    padding-bottom: clamp(0.65rem, 1.5vh, 0.9rem);
+  }
+
+  #experience h2 {
+    font-size: clamp(1.7rem, min(8.4vw, 5.5vh), 2.4rem) !important;
+  }
+
+  #experience > .relative.z-10 > div {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+
+  #experience article {
+    flex: 0 0 auto;
+    height: clamp(10rem, 23vh, 12.25rem);
+  }
+
+  #experience article > .relative.z-10 {
+    grid-template-columns: clamp(3.15rem, 15vw, 4rem) minmax(0, 1fr);
+    column-gap: clamp(0.65rem, 3vw, 1rem);
+    padding-inline: 1rem;
+    padding-block: clamp(0.6rem, 1.5vh, 0.9rem);
+  }
+
+  #experience article > span:first-of-type {
+    right: -0.5rem;
+    font-size: clamp(8rem, 38vw, 11rem);
+  }
+
+  #experience article h3 {
+    margin-top: 0.35rem;
+    font-size: clamp(1.45rem, min(6.2vw, 4vh), 2rem) !important;
+  }
+
+  #experience article h3 + div {
+    margin-top: 0.4rem;
+    gap: 0.2rem 0.65rem;
+  }
+
+  #experience article h3 + div > p:first-child {
+    font-size: clamp(0.72rem, 3.2vw, 0.9rem);
+  }
+
+  #experience article h3 + div > p:last-child {
+    font-size: clamp(0.55rem, 2.5vw, 0.68rem);
+    line-height: 1.35;
+  }
+
+  #experience > .relative.z-10 > footer {
+    padding-inline: 1rem;
+  }
+
+  #experience > .relative.z-10 > footer > div {
+    grid-template-columns: clamp(5rem, 24vw, 6rem) minmax(0, 1fr);
+  }
+
+  #experience > .relative.z-10 > footer > div > div:first-child {
+    padding-right: 0.5rem;
+  }
+
+  #experience > .relative.z-10 > footer > div > div:first-child > p:last-child {
+    max-width: 4.75rem;
+    white-space: normal;
+    font-size: 0.68rem;
+    line-height: 1.05;
+  }
+
+  #experience > .relative.z-10 > footer > div > div:last-child > div {
+    padding-inline: clamp(0.3rem, 1.8vw, 0.55rem);
+  }
+}
+
+/* Experience composition for displays larger than a standard laptop. */
+@media (min-width: 100rem) and (min-height: 50rem) {
+  #experience > .relative.z-10 > header,
+  #experience article > .relative.z-10,
+  #experience > .relative.z-10 > footer {
+    max-width: min(92vw, 140rem);
+  }
+
+  #experience > .relative.z-10 > header,
+  #experience > .relative.z-10 > footer {
+    padding-inline: clamp(3rem, 3.5vw, 5rem);
+  }
+
+  #experience h2 {
+    font-size: clamp(6.5rem, min(6.6vw, 10vh), 8.25rem) !important;
+  }
+
+  #experience article > .relative.z-10 {
+    grid-template-columns:
+      clamp(10rem, 9vw, 13rem)
+      minmax(0, 1.25fr)
+      minmax(24rem, 0.75fr);
+    column-gap: clamp(2.5rem, 3vw, 4.5rem);
+    padding-inline: clamp(3rem, 3.5vw, 5rem);
+  }
+
+  #experience article > span:first-of-type {
+    right: clamp(4rem, 5vw, 8rem);
+    font-size: clamp(20rem, 18vw, 28rem);
+  }
+
+  #experience article > .relative.z-10 > div:first-child > p:nth-child(2) {
+    font-size: clamp(4rem, min(4vw, 6vh), 5.25rem) !important;
+  }
+
+  #experience article h3 {
+    max-width: 52rem;
+    font-size: clamp(4.2rem, min(4vw, 6vh), 5.4rem) !important;
+  }
+
+  #experience article h3 + div > p:first-child {
+    font-size: clamp(1rem, 0.9vw, 1.25rem);
+  }
+
+  #experience article > .relative.z-10 > div:nth-child(3) > p:first-child {
+    font-size: clamp(0.9rem, 0.75vw, 1.1rem);
+    line-height: 1.7;
+  }
+
+  #experience > .relative.z-10 > footer > div {
+    grid-template-columns: minmax(18rem, 0.65fr) minmax(0, 2.35fr);
+  }
+
+  #experience > .relative.z-10 > footer p {
+    font-size: clamp(0.75rem, 0.7vw, 1rem);
+  }
+}
+
+/* Compact Contact composition for small screens. */
+@media (max-width: 47.999rem) {
+  #contact {
+    padding-top: 5.5rem;
+    padding-bottom: 1rem;
+  }
+
+  #contact > .relative.z-10 {
+    min-height: 0;
+  }
+
+  #contact > .relative.z-10 > header {
+    padding-bottom: 0.75rem;
+  }
+
+  #contact > .relative.z-10 > div:first-of-type {
+    gap: 1.75rem;
+  }
+
+  #contact h2 > span > span {
+    font-size: clamp(2.65rem, 12vw, 3.35rem) !important;
+  }
+
+  #contact h2 + div {
+    margin-top: 1rem;
+    padding-left: 1rem;
+  }
+
+  #contact h2 + div + a {
+    margin-top: 1.25rem;
+  }
+
+  #contact > .relative.z-10 > div:first-of-type > div:last-child > div.relative.overflow-hidden {
+    padding: 1rem;
+  }
+
+  #contact form {
+    margin-top: 0.25rem;
+  }
+
+  #contact form > label {
+    padding-block: 0.65rem;
+  }
+
+  #contact form input,
+  #contact form textarea {
+    margin-top: 0.3rem;
+  }
+
+  #contact form textarea {
+    min-height: 3.75rem;
+  }
+
+  #contact form > button > span {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  #contact form > p:last-child {
+    margin-top: 0.5rem;
+  }
+
+  #contact > .relative.z-10 > div:last-of-type {
+    margin-top: 3rem;
+  }
+
+  #contact > .relative.z-10 > div:last-of-type > div:first-child > a {
+    padding-block: 0.65rem;
+  }
+
+}
+
+/* Give the email a full row before three columns have enough room. */
+@media (min-width: 40rem) and (max-width: 63.999rem) {
+  #contact > .relative.z-10 > header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  #contact > .relative.z-10 > header > div {
+    flex-shrink: 0;
+  }
+
+  #contact .contact-links > div:first-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #contact .contact-links > div:first-child > a:first-child {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom-width: 1px;
+  }
+}
+
+/* Compact Contact composition for tablets. */
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+  #contact > .relative.z-10 {
+    min-height: 0;
+  }
+
+  #contact > .relative.z-10 > header {
+    padding-bottom: 1rem;
+  }
+
+  #contact > .relative.z-10 > div:first-of-type {
+    gap: 2rem;
+  }
+
+  #contact h2 > span > span {
+    font-size: clamp(3.75rem, 7vw, 5rem) !important;
+  }
+
+  #contact form > label {
+    padding-block: 0.75rem;
+  }
+
+  #contact form textarea {
+    min-height: 5rem;
+  }
+
+  #contact > .relative.z-10 > div:last-of-type {
+    margin-top: 3rem;
+  }
+}
+
+/* Keep Contact within one viewport on laptop and desktop screens. */
+@media (min-width: 64rem) {
+  #contact {
+    height: 100dvh;
+    min-height: 48rem;
+    padding-bottom: 1rem;
+  }
+
+  #contact > .relative.z-10 {
+    height: 100%;
+    min-height: 0;
+  }
+
+  #contact > .relative.z-10 > header {
+    padding-bottom: clamp(0.75rem, 1.6vh, 1.15rem);
+  }
+
+  #contact > .relative.z-10 > div:first-of-type {
+    gap: clamp(2.5rem, 4vw, 4.5rem);
+    padding-block: 0;
+  }
+
+  #contact h2 > span > span {
+    font-size: clamp(4rem, min(6vw, 8.5vh), 7rem) !important;
+  }
+
+  #contact h2 + div {
+    margin-top: clamp(0.8rem, 1.6vh, 1.25rem);
+  }
+
+  #contact h2 + div + a {
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  #contact > .relative.z-10 > div:first-of-type > div:last-child > div.relative.overflow-hidden {
+    padding: clamp(1.1rem, 1.6vw, 1.5rem);
+  }
+
+  #contact form > label {
+    padding-block: clamp(0.55rem, 1.2vh, 0.8rem);
+  }
+
+  #contact form textarea {
+    min-height: clamp(3.5rem, 7vh, 4.5rem);
+  }
+
+  #contact form > button > span {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  #contact form > p:last-child {
+    margin-top: 0.5rem;
+  }
+
+  #contact > .relative.z-10 > div:last-of-type {
+    margin-top: clamp(3rem, 4vh, 4rem);
+  }
+
+  #contact > .relative.z-10 > div:last-of-type > div:first-child > a {
+    padding-block: clamp(0.55rem, 1.15vh, 0.8rem);
+  }
+
+}
+
+/* Reserve room for the card's offset backdrop on shorter desktops. */
+@media (min-width: 64rem) and (max-height: 51.25rem) {
+  #contact .contact-form-heading {
+    padding-bottom: 0.75rem;
+  }
+
+  #contact form > label {
+    padding-block: 0.5rem;
+  }
+
+  #contact form input,
+  #contact form textarea {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Contact composition for displays larger than a standard laptop. */
+@media (min-width: 100rem) and (min-height: 50rem) {
+  #contact {
+    padding-inline: clamp(4rem, 4vw, 6rem);
+  }
+
+  #contact > .relative.z-10 {
+    max-width: min(92vw, 140rem);
+  }
+
+  #contact > .relative.z-10 > div:first-of-type {
+    grid-template-columns: minmax(0, 1.12fr) minmax(30rem, 0.88fr);
+    gap: clamp(5rem, 5vw, 8rem);
+  }
+
+  #contact h2 > span > span {
+    font-size: clamp(6rem, min(5.5vw, 8.5vh), 7.5rem) !important;
+  }
+}
+
+/* Keep compact mobile bands, but let their contents determine the minimum. */
+@media (max-width: 47.999rem) {
+  #experience {
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  #experience > .relative.z-10 {
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  #experience article {
+    height: auto;
+    min-height: clamp(10rem, 23vh, 12.25rem);
+  }
+
+  #experience article h3 + div > p:last-child {
+    font-size: 0.6875rem;
+  }
+
+  #experience article > .relative.z-10 {
+    height: auto;
+    min-height: inherit;
+  }
+
+  #experience > .relative.z-10 > footer > div {
+    grid-template-columns: 1fr;
+  }
+
+  #experience > .relative.z-10 > footer > div > div:first-child > p:last-child {
+    max-width: none;
+    font-size: 0.875rem;
+  }
+}

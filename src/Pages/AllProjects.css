@@ -1,0 +1,101 @@
+/* Keep each project within one viewport, including room for the fixed nav. */
+.archive-project-layout {
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(0.75rem, 2dvh, 1.5rem);
+  padding-top: 6rem;
+  padding-bottom: clamp(1rem, 3dvh, 2rem);
+}
+
+.archive-project-copy {
+  min-height: 0;
+  max-height: 100%;
+  /* Preserve access to all text with large text zoom or very short windows. */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-inline: 0.75rem;
+  margin-inline: -0.75rem;
+}
+
+.archive-project-category {
+  margin-top: clamp(0.5rem, 1.5dvh, 1rem);
+}
+
+.archive-project-heading {
+  padding-block: clamp(0.4rem, 1dvh, 0.75rem);
+}
+
+.archive-project-heading h2 {
+  font-size: clamp(2rem, min(7vw, 18cqw, 6dvh), 3.5rem);
+}
+
+.archive-project-description {
+  margin-top: clamp(0.35rem, 1dvh, 0.75rem);
+  font-size: clamp(0.8125rem, 1.9dvh, 1rem);
+  line-height: 1.5;
+}
+
+.archive-project-technologies,
+.archive-project-links {
+  margin-top: clamp(0.5rem, 1.5dvh, 1rem);
+}
+
+.archive-project-media {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+}
+
+.archive-project-visual {
+  /* Fit the 4:3 frame to BOTH dimensions of the remaining grid space. */
+  width: min(100cqw, 133.333cqh);
+  flex: none;
+}
+
+@media (min-width: 40rem) and (max-width: 63.999rem) and (max-height: 32rem) {
+  .archive-project-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .archive-project-reversed .archive-project-copy {
+    order: 2;
+    text-align: right;
+  }
+
+  .archive-project-reversed .archive-project-media {
+    order: 1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .archive-project-layout {
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 6rem);
+    padding-top: clamp(6rem, 12dvh, 7rem);
+    padding-bottom: clamp(1.5rem, 6dvh, 7rem);
+  }
+
+  .archive-project-heading h2 {
+    font-size: clamp(2rem, min(7vw, 18cqw, 12dvh), 7.5rem);
+  }
+
+  .archive-project-category,
+  .archive-project-technologies,
+  .archive-project-links {
+    margin-top: clamp(0.5rem, 3dvh, 1.75rem);
+  }
+
+  .archive-project-description {
+    margin-top: clamp(0.5rem, 2dvh, 1.5rem);
+    font-size: clamp(0.875rem, 2dvh, 1.125rem);
+    line-height: 1.65;
+  }
+}
