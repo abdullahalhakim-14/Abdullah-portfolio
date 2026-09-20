@@ -1,16 +1,34 @@
-# React + Vite
+# Abdullah Alhakim Alhendi — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio built with React, Vite, Tailwind CSS, and Framer Motion.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Production checks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run lint
+npm run build
+npm run preview
+```
 
-## Expanding the Oxlint configuration
+## Contact form
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The contact form posts to the Vercel Function at `api/contact.js`. The function validates the submission, filters simple bot traffic, and forwards it to Formspree. Visitors never leave the portfolio or open an email application.
+
+Add these variables in **Vercel → Project → Settings → Environment Variables**:
+
+```text
+FORMSPREE_FORM_ID=your_form_id
+```
+
+Create the form in Formspree with `abdullah.alhakim04@gmail.com` as its notification email, copy the ID from an endpoint such as `https://formspree.io/f/FORM_ID`, apply the variable to Production and Preview, then redeploy the project.
+
+## Deployment
+
+Vercel detects Vite automatically. Use `npm run build` and the `dist` output directory. The included `vercel.json` keeps React Router deep links working while Vercel serves the `/api/contact` function normally.

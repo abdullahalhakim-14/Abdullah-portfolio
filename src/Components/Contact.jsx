@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 const ease = [0.16, 1, 0.3, 1];
@@ -41,6 +41,8 @@ const Arrow = () => (
 const Contact = () => {
   const reduceMotion = useReducedMotion();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitState, setSubmitState] = useState({ status: "idle", message: "" });
+  const formStartedAt = useRef(Date.now());
   const duration = reduceMotion ? 0 : 0.85;
 
   const reveal = {
@@ -64,19 +66,45 @@ const Contact = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
+    if (submitState.status !== "idle") {
+      setSubmitState({ status: "idle", message: "" });
+    }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    if (submitState.status === "submitting") return;
 
-    const subject = encodeURIComponent(
-      `Portfolio project inquiry from ${form.name}`,
-    );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nReply email: ${form.email}\n\nProject details:\n${form.message}`,
-    );
+    setSubmitState({ status: "submitting", message: "Sending your message…" });
 
-    window.location.href = `mailto:abdullah.alhakim04@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          website: new FormData(event.currentTarget).get("website"),
+          startedAt: formStartedAt.current,
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result.message || "Your message could not be sent.");
+      }
+
+      setForm({ name: "", email: "", message: "" });
+      setSubmitState({
+        status: "success",
+        message: "Message received. I’ll get back to you soon.",
+      });
+      formStartedAt.current = Date.now();
+    } catch (error) {
+      setSubmitState({
+        status: "error",
+        message: error.message || "Something went wrong. Please try again.",
+      });
+    }
   };
 
   return (
@@ -225,7 +253,16 @@ const Contact = () => {
                   </span>
                 </div>
 
-                <form className="mt-2" onSubmit={handleSubmit}>
+                <form
+                  className="mt-2"
+                  onSubmit={handleSubmit}
+                  aria-busy={submitState.status === "submitting"}
+                  aria-describedby="contact-form-status"
+                >
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label htmlFor="contact-website">Leave this field empty</label>
+                    <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                  </div>
                   <motion.label className="block border-b border-second/15 py-4" variants={reveal}>
                     <span className="font-ui text-[0.52rem] font-bold uppercase tracking-[0.18em] text-second/75">
                       01 / Your name
@@ -238,6 +275,7 @@ const Contact = () => {
                       placeholder="What should I call you?"
                       className="mt-2 w-full bg-transparent font-display text-lg font-black italic tracking-[-0.035em] text-second outline-none placeholder:text-second/25 sm:text-xl"
                       autoComplete="name"
+                      maxLength={80}
                       required
                     />
                   </motion.label>
@@ -254,6 +292,7 @@ const Contact = () => {
                       placeholder="you@example.com"
                       className="mt-2 w-full bg-transparent font-display text-lg font-black italic tracking-[-0.035em] text-second outline-none placeholder:text-second/25 sm:text-xl"
                       autoComplete="email"
+                      maxLength={254}
                       required
                     />
                   </motion.label>
@@ -268,25 +307,39 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="A short brief, goal, or challenge..."
                       className="mt-2 min-h-20 w-full resize-none bg-transparent font-ui text-sm font-medium leading-[1.6] text-second outline-none placeholder:text-second/25 sm:min-h-24 sm:text-base"
+                      minLength={20}
+                      maxLength={3000}
                       required
                     />
                   </motion.label>
 
                   <motion.button
                     type="submit"
-                    className="group flex w-full items-center justify-between rounded-full bg-maincolor py-2 pl-5 pr-2 font-ui text-[0.6rem] font-bold uppercase tracking-[0.17em] text-first outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-3 focus-visible:ring-offset-[#e8ddc9]"
+                    disabled={submitState.status === "submitting"}
+                    className="group flex w-full items-center justify-between rounded-full bg-maincolor py-2 pl-5 pr-2 font-ui text-[0.6rem] font-bold uppercase tracking-[0.17em] text-first outline-none transition-opacity focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-3 focus-visible:ring-offset-[#e8ddc9] disabled:cursor-wait disabled:opacity-65"
                     whileHover={reduceMotion ? undefined : { scale: 1.015 }}
                     whileTap={reduceMotion ? undefined : { scale: 0.985 }}
                     transition={{ duration: 0.3, ease }}
                   >
-                    Open email draft
+                    {submitState.status === "submitting" ? "Sending message" : "Send project inquiry"}
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent">
                       <Arrow />
                     </span>
                   </motion.button>
 
-                  <p className="mt-3 text-center font-ui text-[0.55rem] font-medium text-second/75">
-                    Opens your email app with the message ready to send.
+                  <p
+                    id="contact-form-status"
+                    role="status"
+                    aria-live="polite"
+                    className={`mt-3 min-h-4 text-center font-ui text-[0.6875rem] font-semibold ${
+                      submitState.status === "success"
+                        ? "text-maincolor"
+                        : submitState.status === "error"
+                          ? "text-[#8f321f]"
+                          : "text-second/75"
+                    }`}
+                  >
+                    {submitState.message || "Your message is sent securely from this form."}
                   </p>
                 </form>
               </div>
