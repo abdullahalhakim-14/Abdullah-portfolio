@@ -107,7 +107,7 @@ const AllProjects = () => {
             className={`archive-project relative h-dvh overflow-hidden ${dark ? "bg-maincolor text-first" : "bg-first text-second"}`}
             initial={reduceMotion ? "visible" : "hidden"}
             whileInView="visible"
-            viewport={{ once: true, amount: 0.22 }}
+            viewport={{ once: false, amount: 0.22 }}
           >
             <div
               className={`pointer-events-none absolute inset-0 ${dark ? "opacity-[0.055] bg-[radial-gradient(circle_at_1px_1px,#F4F2E8_1px,transparent_0)]" : "opacity-[0.055] bg-[radial-gradient(circle_at_1px_1px,#403019_1px,transparent_0)]"} [background-size:22px_22px]`}

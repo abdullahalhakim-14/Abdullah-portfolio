@@ -58,7 +58,7 @@ const Footer = () => {
         className="relative mx-auto max-w-[1450px]"
         initial={reduceMotion ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: reduceMotion ? 0 : 0.65, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-5">

@@ -113,7 +113,7 @@ const Contact = () => {
       className="relative min-h-dvh scroll-mt-0 overflow-hidden bg-first px-5 pb-7 pt-[5.75rem] text-second sm:px-8 sm:pb-10 sm:pt-28 lg:px-12 lg:pb-8 lg:pt-26 xl:px-18"
       initial={reduceMotion ? "visible" : "hidden"}
       whileInView="visible"
-      viewport={{ once: true, amount: 0.16 }}
+      viewport={{ once: false, amount: 0.16 }}
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.055] bg-[radial-gradient(circle_at_1px_1px,#403019_1px,transparent_0)] [background-size:22px_22px]" />
 
@@ -121,7 +121,7 @@ const Contact = () => {
         className="pointer-events-none absolute -bottom-[0.18em] -left-[0.08em] hidden font-display text-[clamp(18rem,37vw,42rem)] font-black italic leading-none tracking-[-0.14em] text-second/[0.025] lg:block"
         initial={{ opacity: 0, x: reduceMotion ? 0 : -120, rotate: reduceMotion ? 0 : -5 }}
         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: reduceMotion ? 0 : 1.2, ease }}
         aria-hidden="true"
       >
@@ -216,14 +216,14 @@ const Contact = () => {
             className="relative mb-3 min-w-0 lg:mb-0"
             initial={{ opacity: 0, x: reduceMotion ? 0 : 90, rotate: reduceMotion ? 0 : 2.5 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: false, amount: 0.25 }}
             transition={{ duration: reduceMotion ? 0 : 1, delay: reduceMotion ? 0 : 0.12, ease }}
           >
             <motion.div
               className="absolute inset-0 rounded-[1.35rem_3rem_1.35rem_3rem] bg-accent sm:rounded-[1.5rem_4rem_1.5rem_4rem] lg:rounded-[2rem_5rem_2rem_5rem]"
               initial={{ x: reduceMotion ? 14 : 70, y: 14, rotate: reduceMotion ? 0 : 4 }}
               whileInView={{ x: 14, y: 14, rotate: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: false, amount: 0.25 }}
               transition={{ duration: reduceMotion ? 0 : 0.95, delay: reduceMotion ? 0 : 0.2, ease }}
               aria-hidden="true"
             />

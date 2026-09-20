@@ -185,7 +185,7 @@ const ExperienceBand = ({ item, index, reduceMotion }) => {
         }`}
         initial={reduceMotion ? false : { opacity: 0, x: 70 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{
           duration: 0.95,
           delay: 0.45 + index * 0.1,
@@ -216,7 +216,7 @@ const ExperienceBand = ({ item, index, reduceMotion }) => {
             x: index === 0 ? "105vw" : "-5vw",
             opacity: [0, 1, 0],
           }}
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: false, amount: 0.45 }}
           transition={{
             duration: 1.15,
             delay: 0.3 + index * 0.12,
@@ -376,7 +376,7 @@ const Experience = () => {
       initial={reduceMotion ? "visible" : "hidden"}
       whileInView="visible"
       viewport={{
-        once: true,
+        once: false,
         amount: 0.15,
       }}
     >
@@ -408,7 +408,7 @@ const Experience = () => {
                 className="h-[2px] w-10 origin-left bg-accent sm:w-14"
                 initial={reduceMotion ? false : { scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{
                   duration: 0.8,
                   delay: 0.32,

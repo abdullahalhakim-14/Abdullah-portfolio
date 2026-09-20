@@ -255,6 +255,12 @@
   outline-offset: 4px;
 }
 
+/* Sections receive programmatic focus after navigation; hide the browser's
+   default full-width outline while keeping focus rings on interactive UI. */
+main > section[tabindex="-1"]:focus {
+  outline: none;
+}
+
 #contact form input:focus-visible,
 #contact form textarea:focus-visible {
   outline: 2px solid var(--color-maincolor);

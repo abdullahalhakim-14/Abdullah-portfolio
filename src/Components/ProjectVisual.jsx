@@ -231,7 +231,7 @@ const ProjectVisual = ({ type, image, imageAlt, reduceMotion, className = "" }) 
           className="pointer-events-none absolute inset-0 z-30 border-l border-first/75"
           initial={{ x: "-5%", opacity: 0 }}
           whileInView={{ x: "105%", opacity: [0, 1, 0] }}
-          viewport={{ once: true, amount: 0.55 }}
+          viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 1.05, delay: 0.45, ease }}
         />
       )}

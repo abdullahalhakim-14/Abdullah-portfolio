@@ -24,7 +24,8 @@ const Hero = () => {
             <motion.span
               className="block"
               initial={reduceMotion ? false : { opacity: 0, y: 90 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.35 }}
               transition={{
                 duration: 0.9,
                 ease: [0.16, 1, 0.3, 1],
@@ -36,7 +37,8 @@ const Hero = () => {
             <motion.span
               className="block font-semibold tracking-[-0.07em]"
               initial={reduceMotion ? false : { opacity: 0, y: 90 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.35 }}
               transition={{
                 duration: 0.9,
                 delay: 0.15,
@@ -50,7 +52,8 @@ const Hero = () => {
           <motion.p
             className="mt-[clamp(0.7rem,1.7vh,1.3rem)] max-w-140 font-display font-black italic text-[clamp(0.78rem,1.1vw,1rem)] leading-relaxed text-second/65"
             initial={reduceMotion ? false : { opacity: 0, y: 24, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: false, amount: 0.35 }}
             transition={{
               duration: 0.8,
               delay: 0.45,
@@ -66,7 +69,8 @@ const Hero = () => {
         <motion.div
           className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-xs font-bold uppercase tracking-[-0.03em] text-second/75 md:flex"
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.35 }}
           transition={{
             duration: 0.7,
             delay: 0.9,
@@ -78,7 +82,7 @@ const Hero = () => {
           <motion.span
             className="h-1.5 w-1.5 rounded-full bg-second/40"
             whileInView={reduceMotion ? undefined : { y: [0, 6, 0] }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{
               duration: 1.4,
               repeat: 3,
@@ -91,7 +95,8 @@ const Hero = () => {
         <motion.div
           className="flex shrink-0 items-end justify-between font-ui text-second"
           initial={reduceMotion ? false : { opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: false, amount: 0.35 }}
           transition={{
             duration: 0.8,
             delay: 0.65,

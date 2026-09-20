@@ -38,7 +38,7 @@ const Projects = () => {
       className="relative h-dvh scroll-mt-0 overflow-hidden bg-first text-second"
       initial={reduceMotion ? "visible" : "hidden"}
       whileInView="visible"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ once: false, amount: 0.12 }}
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.055] bg-[radial-gradient(circle_at_1px_1px,#403019_1px,transparent_0)] [background-size:22px_22px]" />
 

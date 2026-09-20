@@ -120,7 +120,7 @@ const About = () => {
       initial={reduceMotion ? "visible" : "hidden"}
       whileInView="visible"
       viewport={{
-        once: true,
+        once: false,
         amount: 0.12,
       }}
     >

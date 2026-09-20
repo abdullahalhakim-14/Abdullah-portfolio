@@ -284,7 +284,7 @@ const Education = () => {
         className="pointer-events-none absolute -bottom-10 -left-8 hidden font-display text-[20rem] font-black italic leading-none tracking-[-0.12em] text-second/[0.025] lg:block"
         initial={reduceMotion ? false : { opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 1.2, ease }}
       >
         EDU
@@ -295,7 +295,7 @@ const Education = () => {
         variants={containerVariants}
         initial={reduceMotion ? "visible" : "hidden"}
         whileInView="visible"
-        viewport={{ once: true, amount: 0.16 }}
+        viewport={{ once: false, amount: 0.16 }}
       >
         {/* Section heading */}
         <header className="mb-7">
@@ -343,7 +343,7 @@ const Education = () => {
             className="pointer-events-none absolute left-1/2 top-5 hidden h-[calc(100%-2.5rem)] w-px origin-top -translate-x-1/2 bg-accent lg:block"
             initial={reduceMotion ? false : { scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.4 }}
             transition={{
               duration: 1.1,
               delay: 0.65,
@@ -354,7 +354,7 @@ const Education = () => {
               className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-first bg-accent"
               initial={reduceMotion ? false : { scale: 0 }}
               whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{
                 duration: 0.55,
                 delay: 1.15,
