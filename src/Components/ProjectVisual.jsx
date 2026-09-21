@@ -181,28 +181,48 @@ const TravelVisual = () => (
 );
 
 const screenshotBackgrounds = {
+  blink: "linear-gradient(145deg, #f8f1ff, #e3c9ff 48%, #b630ff)",
+  "digital-art": "linear-gradient(145deg, #050d25, #0a183d 58%, #152d5a)",
   dashboard: "linear-gradient(145deg, #edf6f4, #bad8d6 55%, #719e96)",
   landing: "linear-gradient(145deg, #f5f1e8, #ded4ec 55%, #b3a0c5)",
   travel: "linear-gradient(145deg, #e0ede0, #aacac0 55%, #458b85)",
 };
 
-const ProjectScreenshot = ({ type, image, imageAlt }) => (
+const featuredScreenshots = {
+  blink: {
+    image: "/assets/projects/blink-dashboard.png",
+    imageAlt: "Blink business management analytics dashboard",
+  },
+  "digital-art": {
+    image: "/assets/projects/digital-art-exhibition.png",
+    imageAlt: "Arabic Digital Art Exhibition website home page",
+  },
+};
+
+const ProjectScreenshot = ({ type, image, imageAlt, card = false }) => (
   <div
-    className="relative flex h-full items-center overflow-hidden p-[5%]"
+    className={`relative h-full overflow-hidden ${card ? "p-[5%]" : "flex items-center p-[5%]"}`}
     style={{ background: screenshotBackgrounds[type] }}
   >
-    <div className="w-full overflow-hidden rounded-[0.8rem_2rem_0.8rem_2rem] border border-white/60 bg-white shadow-[0_22px_55px_rgba(30,40,30,0.22)]">
+    <div className={`${card ? "absolute inset-x-[5%] top-1/2 -translate-y-1/2 lg:top-[15%] lg:translate-y-0" : "w-full"} overflow-hidden rounded-[0.8rem_2rem_0.8rem_2rem] border border-white/60 bg-white shadow-[0_22px_55px_rgba(30,40,30,0.22)]`}>
       <div aria-hidden="true" className="flex h-[clamp(1rem,2vw,1.7rem)] items-center gap-1 border-b border-second/10 bg-first px-[3%]">
         {[0, 1, 2].map((dot) => (
           <span key={dot} className="h-1 w-1 rounded-full bg-second/25" />
         ))}
       </div>
-      <img src={image} alt={imageAlt} loading="lazy" decoding="async" className="block h-auto w-full" />
+      <img
+        src={image}
+        alt={imageAlt}
+        loading="lazy"
+        decoding="async"
+        className={card ? "block aspect-[2.1] w-full object-cover object-top" : "block h-auto w-full"}
+      />
     </div>
   </div>
 );
 
-const ProjectVisual = ({ type, image, imageAlt, reduceMotion, className = "" }) => {
+const ProjectVisual = ({ type, image, imageAlt, reduceMotion, card = false, className = "" }) => {
+  const screenshot = featuredScreenshots[type];
   const Visual =
     type === "blink"
       ? BlinkVisual
@@ -224,7 +244,18 @@ const ProjectVisual = ({ type, image, imageAlt, reduceMotion, className = "" }) 
       }
       transition={{ duration: 0.45, ease }}
     >
-      {image ? <ProjectScreenshot type={type} image={image} imageAlt={imageAlt} /> : <Visual />}
+      {card && (image || screenshot) ? (
+        <ProjectScreenshot
+          type={type}
+          image={image ?? screenshot?.image}
+          imageAlt={imageAlt ?? screenshot?.imageAlt}
+          card
+        />
+      ) : image ? (
+        <ProjectScreenshot type={type} image={image} imageAlt={imageAlt} />
+      ) : (
+        <Visual />
+      )}
     </motion.div>
   );
 };

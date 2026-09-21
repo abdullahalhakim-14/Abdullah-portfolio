@@ -20,15 +20,9 @@ const cardVariants = {
   }),
 };
 
-const cardRadii = [
-  "3.8rem 1.35rem 3.8rem 1.35rem",
-  "1.35rem 3.8rem 1.35rem 3.8rem",
-  "3.8rem 1.35rem 3.8rem 1.35rem",
-];
+const cardRadius = "3.8rem 1.35rem 3.8rem 1.35rem";
 
 const ProjectCard = ({ project, index = 0, reduceMotion = false }) => {
-  const radius = cardRadii[index % cardRadii.length];
-
   return (
     <motion.article
       className="relative h-full min-h-0 w-[82vw] max-w-[390px] shrink-0 snap-center sm:w-[58vw] lg:w-auto lg:max-w-none"
@@ -47,7 +41,7 @@ const ProjectCard = ({ project, index = 0, reduceMotion = false }) => {
       <motion.div
         aria-hidden="true"
         className="absolute inset-0 translate-x-2.5 translate-y-2.5 bg-[#98a890] sm:translate-x-3 sm:translate-y-3"
-        style={{ borderRadius: radius }}
+        style={{ borderRadius: cardRadius }}
         variants={{
           hidden: { opacity: 0, scale: 0.92 },
           visible: {
@@ -64,7 +58,7 @@ const ProjectCard = ({ project, index = 0, reduceMotion = false }) => {
 
       <div
         className="relative z-10 flex h-full min-h-0 flex-col overflow-hidden border border-second/10 bg-[#e8ddc9] shadow-[0_24px_65px_rgba(35,42,25,0.2)]"
-        style={{ borderRadius: radius }}
+        style={{ borderRadius: cardRadius }}
       >
         <div className="project-card-image relative min-h-0 flex-1 overflow-hidden bg-maincolor">
           <ProjectVisual
@@ -72,6 +66,7 @@ const ProjectCard = ({ project, index = 0, reduceMotion = false }) => {
             image={project.image}
             imageAlt={project.imageAlt}
             reduceMotion={reduceMotion}
+            card
             className="h-full w-full"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#192015]/40 via-transparent to-transparent" />
