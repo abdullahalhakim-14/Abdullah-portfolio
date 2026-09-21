@@ -65,9 +65,9 @@ const IntroScreen = ({ onFinish }) => {
         </motion.p>
 
         {/* Progress line */}
-        <div className="mt-10 h-[2px] w-56 overflow-hidden rounded-full bg-second/10">
+        <div className="mt-10 h-[2px] w-56 rounded-full bg-maincolor/15">
           <motion.div
-            className="h-full origin-left rounded-full bg-[#403019]"
+            className="h-full origin-left rounded-full bg-[#607a2d] shadow-[0_0_6px_rgba(96,122,45,0.95),0_0_16px_rgba(96,122,45,0.7),0_0_28px_rgba(96,122,45,0.4)]"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{
